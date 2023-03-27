@@ -1,11 +1,9 @@
 // Winning combinations: [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 4, 8], [2, 4, 6]
 
+const body = document.querySelector('body')
 const container = document.querySelector('.container')
 const cells = document.createElement('div')
 const info = document.querySelector('.instruction')
-
-// 1 is cross
-// 0 is naught
 
 let turn = 1
 let go = 'cross'
@@ -13,7 +11,6 @@ let instructions = 'Cross\'s turn'
 let crossChoices = []
 let naughtChoices = []
 const winningCombinations = [[0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 4, 8], [2, 4, 6]]
-
 
 const boardCells = [ "", "", "", 
                     "", "", "", 
@@ -36,7 +33,6 @@ document.querySelectorAll('.cells').forEach((item, index) => {
         const selection = document.createElement('div')
         selection.classList.add(`${go}`)
         item.appendChild(selection)
-        console.log(index) // Need to know which cell is what so we can determine winning combo
         go = (go === 'cross') ? 'circle' : 'cross'
         instructions = (instructions === 'Cross\'s turn') ? 'Naught\'s turn' : 'Cross\'s turn'
         info.textContent = instructions
@@ -45,42 +41,37 @@ document.querySelectorAll('.cells').forEach((item, index) => {
         } else {
             crossChoices.push(index)
         }
-        item.removeEventListener('click', event)
         arraysMatch(crossChoices)
-
+        arraysMatch2(naughtChoices)
     })
 })
 
+// This function check if crosses has a winning combination
 function arraysMatch(arr1) {
-    	if (arr1.length !== 3) return false;
-    	for (var i = 0; i < arr1.length; i++) {
-            arr1.sort()
-    		if (arr1[i] !== winningCombinations[0][i]) return false;
-    	}
-    
-    	// Otherwise, return true
-    	console.log('winner');
-    
-    };
+    for (let i = 0; i < winningCombinations.length; i++) {
+        let containsAll = winningCombinations[i].every(i => arr1.includes(i));
+        if (containsAll === true) {
+            const popUp = document.createElement('div')
+            body.appendChild(popUp)
+            popUp.classList.add('winner')
+            popUp.textContent = `Crosses win!`
+            popUp.style.color = 'blue'
+        }
+    }
+}
+
+// This function checks if naughts has a winning combination
+function arraysMatch2(arr1) {
+    for (let i = 0; i < winningCombinations.length; i++) {
+        let containsAll = winningCombinations[i].every(i => arr1.includes(i));
+        if (containsAll === true) {
+            const popUp = document.createElement('div')
+            body.appendChild(popUp)
+            popUp.classList.add('winner')
+            popUp.textContent = `Naughts win!`
+            popUp.style.color = 'red'
+        }
+    }
+}
 
 
-// function arraysMatch(arr1, arr2) {
-// 	if (arr1.length !== arr2.length) return false;
-// 	for (var i = 0; i < arr1.length; i++) {
-//         arr2.sort()
-// 		if (arr1[i] !== arr2[i]) return false;
-// 	}
-
-// 	// Otherwise, return true
-// 	console.log('winner');
-
-// };
-
-let array1 = [1,2,3],
-    array2 = [1,2,3,4],
-    array3 = [1,2];
-
-let checker = (arr, target) => target.every(v => arr.includes(v));
-
-console.log(checker(array2, array1));  // true
-console.log(checker(array3, array1));  // false

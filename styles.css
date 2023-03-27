@@ -13,6 +13,7 @@ body {
 .title {
     font-size: x-large;
     margin-bottom: 25px;
+    margin-top: -50px;
     border: 1px solid black;
     background-color: white;
     padding: 10px 25px;
@@ -64,3 +65,14 @@ body {
     top: 40px;
     width: 100px;
   }
+
+.winner {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(255,255,255,.95);
+    padding-top: 750px;
+    font-size: 3em;
+}
