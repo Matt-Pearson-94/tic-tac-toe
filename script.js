@@ -17,7 +17,7 @@ const boardCells = [ "", "", "",
                     "", "", ""]
 
 function createBoard() {
-    boardCells.forEach((cell, index) => {
+    boardCells.forEach((index) => {
         const cells = document.createElement('div')
         cells.classList.add('cells')
         container.appendChild(cells)
@@ -43,6 +43,7 @@ document.querySelectorAll('.cells').forEach((item, index) => {
         }
         arraysMatch(crossChoices)
         arraysMatch2(naughtChoices)
+        tieCheck(crossChoices, naughtChoices)
     })
 })
 
@@ -74,4 +75,12 @@ function arraysMatch2(arr1) {
     }
 }
 
-
+function tieCheck(arr1, arr2) {
+    if (arr1.length + arr2.length === 9) {
+        const popUp = document.createElement('div')
+        body.appendChild(popUp)
+        popUp.classList.add('winner')
+        popUp.textContent = `It\'s a tie game!`
+        // popUp.style.color = 'red'
+    }
+}
