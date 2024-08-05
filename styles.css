@@ -8,7 +8,7 @@ body {
 .title-container {
     display: flex;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 25px;
     justify-content: center;
 }
 
@@ -17,14 +17,87 @@ body {
     font-size: 3em;
 }
 
+.player-name-input {
+    position: absolute;
+    z-index: 800;
+    width: 100vw;
+    background-color: rgba(128, 128, 128, 0.589);
+    height: 100vh;
+    /* display: none; */
+}
+
+.player-name-input > div {
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    border: 1px solid black;
+    width: 1000px;
+    height: 250px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-name-input > div:hover {
+    box-shadow: 5px 10px;
+    transition: box-shadow 0.2s ease-in-out
+}
+
+.player-one {
+    /* position: relative; */
+    z-index: 1000;
+}
+
+.player-name-input > div > input {
+    width: 300px;
+    height: 50px;
+    margin: 20px;
+}
+
+.player-name-input > div > label {
+    font-size: 2em;
+}
+
+.player-name-input > div > button {
+    width: 200px;
+    height: 35px;
+    font-weight: 600;
+}
 
 
+.player-info-display{
+    display: flex;
+    margin-top: 25px;
+    justify-content: space-evenly;
+}
 
 
+.player-container > :not(:first-child) {
+    font-size: 1.5em;
+}
 
+.player-container > :first-child {
+    margin-bottom: 10px;
+    font-size: 2em;
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+}
 
+.gameboard-container {
+    width: 500px;
+    height: 500px;
+    border: 2px solid black;
+    display: flex;
+    flex-wrap: wrap;
+}
 
-
+.square {
+    background-color: red;
+    width: 10px;
+    /* height: 10px; */
+}
 
 
 
