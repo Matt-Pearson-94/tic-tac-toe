@@ -3,6 +3,8 @@ body {
     margin: 0;
     background-color: rgb(255 240 228);
     width: 100vw;
+    position: relative;
+    height: 100%;
 }
 
 .title-container {
@@ -20,16 +22,17 @@ body {
 .player-name-input {
     position: absolute;
     z-index: 800;
-    width: 100vw;
+    width: 100%;
     background-color: rgba(128, 128, 128, 0.589);
-    height: 100vh;
+    height: 100%;
+    display: flex;
+    justify-content: center;
     /* display: none; */
 }
 
 .player-name-input > div {
     position: absolute;
     top: 30%;
-    left: 25%;
     border: 1px solid black;
     width: 1000px;
     height: 250px;
@@ -54,6 +57,8 @@ body {
     width: 300px;
     height: 50px;
     margin: 20px;
+    font-family: monospace;
+    font-size: 2em;
 }
 
 .player-name-input > div > label {
@@ -65,7 +70,6 @@ body {
     height: 35px;
     font-weight: 600;
 }
-
 
 .player-info-display{
     display: flex;
@@ -85,19 +89,97 @@ body {
     padding-bottom: 10px;
 }
 
+.main-contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.main-contents > div {
+    font-size: 1.5em;
+}
+
 .gameboard-container {
-    width: 500px;
-    height: 500px;
+    margin-top: 60px;
+    /* margin-left: 35vw; */
+    width: 400px;
+    height: 400px;
     border: 2px solid black;
     display: flex;
     flex-wrap: wrap;
+    box-shadow: 5px 10px;
 }
 
 .square {
-    background-color: red;
+    background-color: rgb(253, 238, 178);
     width: 10px;
-    /* height: 10px; */
+    outline: 1px solid black;
+    text-align: center;
+    font-size: 6em;
 }
+
+.square:hover {
+    background-color: rgb(226, 209, 141);
+    cursor: pointer;
+}
+
+.winner-container {
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    height: fit-content;
+    display: none;
+    /* flex-direction: column; */
+    justify-content: center;
+    /* align-items: center; */
+    z-index: 600;
+}
+
+.winner-box {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 1000px;
+    height: 250px;
+    background-color: white;
+}
+
+.winner-box:hover {
+    box-shadow: 5px 10px;
+    transition: box-shadow 0.2s ease-in-out
+}
+
+.winner-info {
+    font-size: 3em;
+}
+
+.refresh {
+    background-color: rgb(253, 238, 178);
+    width: 200px;
+    height: 35px;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.refresh:hover {
+    background-color: rgb(226, 209, 141);
+    box-shadow: 5px 10px;
+    transition: box-shadow 0.2s ease-in-out
+}
+
+/* .winner-container {
+    border: 1px solid black;
+    width: 1000px;
+    height: 250px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
 
 
 
@@ -116,7 +198,8 @@ body {
     /* width: 80%; */
     padding: 15px;
     text-align: center;
-    /* border-top: 1px solid black; */
+    z-index: 500;
+    background-color: rgb(255 240 228);
 }
 
 .github-image {
